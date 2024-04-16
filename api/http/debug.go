@@ -1,7 +1,7 @@
 package http
 
 import (
-	"goodshub-datacenter/handler"
+	"goodshub-datacenter/api/handler"
 	"goodshub-datacenter/utils"
 
 	"github.com/gin-gonic/gin"

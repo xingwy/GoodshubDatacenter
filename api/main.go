@@ -2,10 +2,9 @@ package main
 
 import (
 	"flag"
-	"fmt"
+	"goodshub-datacenter/api/handler"
+	"goodshub-datacenter/api/http"
 	"goodshub-datacenter/conf"
-	"goodshub-datacenter/handler"
-	"goodshub-datacenter/http"
 
 	"github.com/gin-gonic/gin"
 	"github.com/micro/go-micro/v2"
@@ -17,7 +16,6 @@ type program struct {
 }
 
 func (p *program) BeforeStart() error {
-	fmt.Println("Before Start Program")
 	// 初始化处理模块
 	p.handler = handler.New(conf.Conf)
 	// 注册路由
@@ -26,24 +24,18 @@ func (p *program) BeforeStart() error {
 }
 
 func (p *program) AfterStart() error {
-	fmt.Println("After Start Program")
 	// 初始化处理模块
-	p.handler = handler.New(conf.Conf)
-	// 注册路由
-	p.httpEngine = http.Reginster(gin.Default())
 	p.httpEngine.Run(conf.Conf.GinServer.Addr())
 	return nil
 }
 
 func (p *program) BeforeStop() error {
-	fmt.Println("Before Stop Program")
-
+	// TODO
 	return nil
 }
 
 func (p *program) AfterStop() error {
-	fmt.Println("After Stop Program")
-
+	// TODO
 	return nil
 }
 

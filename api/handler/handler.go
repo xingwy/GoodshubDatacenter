@@ -4,8 +4,8 @@ import (
 	topsdk_helper "goodshub-datacenter/common/topsdk"
 	"goodshub-datacenter/conf"
 	"goodshub-datacenter/dao"
-	"goodshub-datacenter/handler/debug"
-	taobao_handler "goodshub-datacenter/handler/taobao"
+	"goodshub-datacenter/api/handler/debug"
+	taobao_handler "goodshub-datacenter/api/handler/taobao"
 	"goodshub-datacenter/struct/event"
 )
 
