@@ -4,7 +4,6 @@ import (
 	"context"
 	"goodshub-datacenter/model/vo"
 
-	request648 "github.com/xingwy/topsdk/ability648/request"
 	"github.com/xingwy/topsdk/defaultability/request"
 )
 
@@ -55,7 +54,7 @@ func (h *TaobaoInstance) TaobaoTradeSimpleGet(ctx context.Context, params *vo.Ta
 }
 
 func (h *TaobaoInstance) TaobaoTraderatesGet(ctx context.Context, params *vo.TaobaoTraderatesGetRequest) (any, error) {
-	data, err := h.TopSDKHelper.TaobaoTraderatesGet(ctx, params.SessionID, &request648.TaobaoTraderatesGetRequest{})
+	data, err := h.TopSDKHelper.TaobaoTraderatesGet(ctx, params.SessionID, &params.TaobaoTraderatesGetRequest)
 	if err != nil {
 		return nil, err
 	}

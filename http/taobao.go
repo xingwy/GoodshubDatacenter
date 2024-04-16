@@ -8,17 +8,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-//	 taobao.POST("/taobaoCrmGradeGet", TaobaoCrmGradeGet)
-//		taobao.POST("/taobaoOpencrmCrowdCheck", TaobaoOpencrmCrowdCheck)
-//		taobao.POST("/taobaoJdsTradeTracesGet", TaobaoJdsTradeTracesGet)
-//		taobao.POST("/taobaoTradeSimpleGet", TaobaoTradeSimpleGet)
-//		taobao.POST("/taobaoRefundsApplyGet", TaobaoRefundsApplyGet)
-//		taobao.POST("/alibabaAscpLogisticsOfflineSend", AlibabaAscpLogisticsOfflineSend)
-//		taobao.POST("/alibabaAliqinTaSmsNumSend", AlibabaAliqinTaSmsNumSend)
-//		taobao.POST("/taobaoOpencrmSmsSingleSend", TaobaoOpencrmSmsSingleSend)
-//		taobao.POST("/taobaoItemsOnsaleGet", TaobaoItemsOnsaleGet)
-//		taobao.POST("/taobaoItemSellerGet", TaobaoItemSellerGet)
-//		taobao.POST("/taobaoItemcatsGet", TaobaoItemcatsGet)
 func TaobaoCrmGradeGet(ctx *gin.Context) {
 	var (
 		params vo.TaobaoCrmGradeGetRequest
