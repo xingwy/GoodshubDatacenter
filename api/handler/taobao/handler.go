@@ -20,7 +20,6 @@ type TaobaoHandler interface {
 	TaobaoItemsOnsaleGet(ctx context.Context, params *vo.TaobaoItemsOnsaleGetRequest) (any, error)
 	TaobaoItemSellerGet(ctx context.Context, params *vo.TaobaoItemSellerGetRequest) (any, error)
 	TaobaoItemcatsGet(ctx context.Context, params *vo.TaobaoItemcatsGetRequest) (any, error)
-
 	TimeGet(ctx context.Context, params *vo.TimeGetRequest) (*vo.TimeGetResponse, error)
 }
 

@@ -6,7 +6,7 @@ build_go_file() {
     local output_dir="$2"
     
     echo "Building $go_file..."
-    go mod tidy
+   # go mod tidy
     go build -o $output_dir/service_app $go_file
 
     # 检查编译是否成功

@@ -1,8 +1,6 @@
 package vo
 
 import (
-	"time"
-
 	request312 "github.com/xingwy/topsdk/ability312/request"
 	request648 "github.com/xingwy/topsdk/ability648/request"
 	"github.com/xingwy/topsdk/defaultability/request"
@@ -103,5 +101,5 @@ type TimeGetRequest struct {
 }
 
 type TimeGetResponse struct {
-	Time time.Time `json:"time"`
+	Time string `json:"time"`
 }
