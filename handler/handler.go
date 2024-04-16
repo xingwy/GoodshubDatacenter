@@ -5,6 +5,7 @@ import (
 	"goodshub-datacenter/conf"
 	"goodshub-datacenter/dao"
 	"goodshub-datacenter/handler/debug"
+	taobao_handler "goodshub-datacenter/handler/taobao"
 	"goodshub-datacenter/struct/event"
 )
 
@@ -15,7 +16,8 @@ var (
 type Handler struct {
 	dao *dao.Dao
 	// 业务 处理器
-	debugInstance *debug.DebugInstance
+	taobaoInstance *taobao_handler.TaobaoInstance
+	debugInstance  *debug.DebugInstance
 }
 
 func New(cfg *conf.Config) (s *Handler) {
@@ -37,6 +39,11 @@ func New(cfg *conf.Config) (s *Handler) {
 			EventManager: eventInstance,
 			TopSDKHelper: topsdkInstance,
 		},
+		taobaoInstance: &taobao_handler.TaobaoInstance{
+			Dao:          daoInstance,
+			EventManager: eventInstance,
+			TopSDKHelper: topsdkInstance,
+		},
 	}
 
 	return Instance.Init()
@@ -49,6 +56,11 @@ func (s *Handler) Init() *Handler {
 
 func (s *Handler) Dao() *dao.Dao {
 	return s.dao
+}
+
+// 获取 TaobaoHandler
+func (s *Handler) TaobaoHandler() taobao_handler.TaobaoHandler {
+	return s.taobaoInstance
 }
 
 // 获取 DemoHandler
