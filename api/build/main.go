@@ -5,9 +5,10 @@ import (
 	"goodshub-datacenter/api/handler"
 	"goodshub-datacenter/api/http"
 	"goodshub-datacenter/conf"
+	"log"
 
 	"github.com/gin-gonic/gin"
-	"github.com/micro/go-micro/v2"
+	"github.com/kardianos/service"
 )
 
 type program struct {
@@ -15,36 +16,21 @@ type program struct {
 	httpEngine *gin.Engine
 }
 
-func (p *program) BeforeStart() error {
+func (p *program) Start(s service.Service) error {
 	// 初始化处理模块
 	p.handler = handler.New(conf.Conf)
 	// 注册路由
 	p.httpEngine = http.Reginster(gin.Default())
-	return nil
-}
-
-func (p *program) AfterStart() error {
-	// 初始化处理模块
-	p.httpEngine.Run(conf.Conf.GinServer.Addr())
-	return nil
-}
-
-func (p *program) BeforeStop() error {
-	// TODO
-	return nil
-}
-
-func (p *program) AfterStop() error {
-	// TODO
-	return nil
-}
-
-func (p *program) Run() error {
 	// 运行
 	err := p.httpEngine.Run(conf.Conf.GinServer.Addr())
 	if err != nil {
 		return err
 	}
+	return nil
+}
+
+func (p *program) Stop(s service.Service) error {
+	// TODO
 	return nil
 }
 
@@ -54,18 +40,20 @@ func main() {
 		panic(err)
 	}
 
-	prg := &program{}
-	service := micro.NewService()
-	// 初始化
-	service.Init(
-		micro.Name(conf.Conf.ServiceName),
-		micro.BeforeStart(prg.BeforeStart),
-		micro.AfterStart(prg.AfterStart),
-		micro.BeforeStop(prg.BeforeStop),
-		micro.AfterStop(prg.AfterStop),
-	)
+	svcConfig := &service.Config{
+		Name:        conf.Conf.ServiceName,
+		DisplayName: "数据中心",
+		Description: "商品中台-数据中心",
+	}
 
-	if err := service.Run(); err != nil {
+	prg := &program{}
+	s, err := service.New(prg, svcConfig)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = s.Run()
+	if err != nil {
 		panic(err)
 	}
 }
