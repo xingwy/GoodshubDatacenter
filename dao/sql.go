@@ -2,7 +2,7 @@ package dao
 
 import (
 	"fmt"
-	"goodshub-datacenter/struct/define"
+	"goodshub-datacenter/model/base"
 	"goodshub-datacenter/struct/slog"
 	"strings"
 	"time"
@@ -26,7 +26,7 @@ var (
 )
 
 // New 创建一个gorm.DB
-func DBConnect(conf *define.DBConfig) (*gorm.DB, error) {
+func DBConnect(conf *base.DBConfig) (*gorm.DB, error) {
 	err := authConfig(conf)
 	if err != nil {
 		panic(err)
@@ -78,7 +78,7 @@ func DBConnect(conf *define.DBConfig) (*gorm.DB, error) {
 	return DBConnect, nil
 }
 
-func authConfig(conf *define.DBConfig) (err error) {
+func authConfig(conf *base.DBConfig) (err error) {
 
 	if len(conf.Type) == 0 {
 		conf.Type = defaultDatabase

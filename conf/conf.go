@@ -1,7 +1,7 @@
 package conf
 
 import (
-	"goodshub-datacenter/struct/define"
+	"goodshub-datacenter/model/base"
 	"os"
 
 	"gopkg.in/yaml.v2"
@@ -13,11 +13,11 @@ var (
 )
 
 type Config struct {
-	ServiceName string              `yaml:"serviceName"`
-	GinServer   *define.GinConfig   `yaml:"ginserver"`
-	DB          *define.DBConfig    `yaml:"db"`
-	Redis       *define.RedisConfig `yaml:"redis"`
-	OpenTaoBao  *define.OpenTaoBao  `yaml:"openTaobao"`
+	ServiceName string            `yaml:"serviceName"`
+	GinServer   *base.GinConfig   `yaml:"ginserver"`
+	DB          *base.DBConfig    `yaml:"db"`
+	Redis       *base.RedisConfig `yaml:"redis"`
+	OpenTaoBao  *base.OpenTaoBao  `yaml:"openTaobao"`
 }
 
 func init() {
