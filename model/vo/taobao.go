@@ -1,6 +1,8 @@
 package vo
 
 import (
+	"time"
+
 	request312 "github.com/xingwy/topsdk/ability312/request"
 	request648 "github.com/xingwy/topsdk/ability648/request"
 	"github.com/xingwy/topsdk/defaultability/request"
@@ -94,4 +96,12 @@ type TaobaoItemcatsGetRequest struct {
 }
 
 type TaobaoItemcatsGetResponse struct {
+}
+
+type TimeGetRequest struct {
+	request.TimeGetRequest
+}
+
+type TimeGetResponse struct {
+	Time time.Time `json:"time"`
 }

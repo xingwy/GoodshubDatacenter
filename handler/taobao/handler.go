@@ -20,6 +20,8 @@ type TaobaoHandler interface {
 	TaobaoItemsOnsaleGet(ctx context.Context, params *vo.TaobaoItemsOnsaleGetRequest) (any, error)
 	TaobaoItemSellerGet(ctx context.Context, params *vo.TaobaoItemSellerGetRequest) (any, error)
 	TaobaoItemcatsGet(ctx context.Context, params *vo.TaobaoItemcatsGetRequest) (any, error)
+
+	TimeGet(ctx context.Context, params *vo.TimeGetRequest) (*vo.TimeGetResponse, error)
 }
 
 func (h *TaobaoInstance) TaobaoCrmGradeGet(ctx context.Context, params *vo.TaobaoCrmGradeGetRequest) (any, error) {
@@ -123,4 +125,16 @@ func (h *TaobaoInstance) TaobaoItemcatsGet(ctx context.Context, params *vo.Taoba
 	}
 
 	return data, nil
+}
+
+func (h *TaobaoInstance) TimeGet(ctx context.Context, params *vo.TimeGetRequest) (*vo.TimeGetResponse, error) {
+	res := &vo.TimeGetResponse{}
+	data, err := h.TopSDKHelper.TimeGet(ctx, &params.TimeGetRequest)
+	if err != nil {
+		return nil, err
+	}
+
+	res.Time = data.Time
+
+	return res, nil
 }

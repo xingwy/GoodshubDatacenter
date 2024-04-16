@@ -225,3 +225,21 @@ func TaobaoItemcatsGet(ctx *gin.Context) {
 
 	utils.ResponseOk(ctx, data, "success")
 }
+
+func TimeGet(ctx *gin.Context) {
+	var params vo.TimeGetRequest
+
+	err := ctx.Bind(&params)
+	if err != nil {
+		utils.ResponseFailed(ctx, err.Error())
+		return
+	}
+
+	data, err := handler.Instance.TaobaoHandler().TimeGet(ctx, &params)
+	if err != nil {
+		utils.ResponseFailed(ctx, err.Error())
+		return
+	}
+
+	utils.ResponseOk(ctx, data, "success")
+}

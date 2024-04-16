@@ -7,7 +7,7 @@ require (
 	github.com/go-redis/redis/v8 v8.11.5
 	github.com/google/uuid v1.6.0
 	github.com/micro/go-micro/v2 v2.9.1
-	github.com/xingwy/topsdk v1.0.2
+	github.com/xingwy/topsdk v1.0.3
 	gopkg.in/yaml.v2 v2.4.0
 	gorm.io/driver/mysql v1.5.6
 	gorm.io/gorm v1.25.9

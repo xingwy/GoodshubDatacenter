@@ -41,8 +41,8 @@ type TopSDKHelper interface {
 	TaobaoOpencrmCardSmsCrowdSend(ctx context.Context, userSession string, req any) (any, error)
 	// https://open.taobao.com/api.htm?docId=57623&docType=2&scopeId=24046 通用-客户运营平台-nick与openid互转
 	TaobaoCrmHistoryOuidGet(ctx context.Context, userSession string, req any) (any, error)
-	// https://open.taobao.com/api.htm?docId=120&docType=2&scopeId=381 通用-系统工具
-	TimeGet(ctx context.Context, userSession string, req any) (any, error)
+	// https://open.taobao.com/api.htm?docId=120&docType=2&scopeId=381 通用-时间获取
+	TimeGet(ctx context.Context, req *request.TimeGetRequest) (*response.TimeGetResponse, error)
 	// https://open.taobao.com/api.htm?docId=18&docType=2&scopeId=382 商品相关-卖家商品查询
 	TaobaoItemsOnsaleGet(ctx context.Context, userSession string, req *request.TaobaoItemsOnsaleGetRequest) (*response.TaobaoItemsOnsaleGetResponse, error)
 	// https://open.taobao.com/api.htm?docId=24625&docType=2&scopeId=12138 商品相关-商品同步
@@ -117,8 +117,8 @@ func (i *TopSDKInstance) TaobaoCrmHistoryOuidGet(ctx context.Context, userSessio
 	return nil, nil
 }
 
-func (i *TopSDKInstance) TimeGet(ctx context.Context, userSession string, req any) (any, error) {
-	return nil, nil
+func (i *TopSDKInstance) TimeGet(ctx context.Context, req *request.TimeGetRequest) (*response.TimeGetResponse, error) {
+	return defaultability.NewDefaultability(i.client).TimeGet(req)
 }
 
 func (i *TopSDKInstance) TaobaoItemsOnsaleGet(ctx context.Context, userSession string, req *request.TaobaoItemsOnsaleGetRequest) (*response.TaobaoItemsOnsaleGetResponse, error) {
