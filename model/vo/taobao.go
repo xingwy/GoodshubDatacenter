@@ -103,3 +103,11 @@ type TimeGetRequest struct {
 type TimeGetResponse struct {
 	Time string `json:"time"`
 }
+
+type TaobaoCrmHistoryOuidGetRequest struct {
+	request.TaobaoCrmHistoryOuidGetRequest
+	SessionID string `json:"session_id" form:"session_id"`
+}
+
+type TaobaoCrmHistoryOuidGetResponse struct {
+}

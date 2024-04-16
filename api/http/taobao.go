@@ -243,3 +243,23 @@ func TimeGet(ctx *gin.Context) {
 
 	utils.ResponseOk(ctx, data, "success")
 }
+
+func TaobaoCrmHistoryOuidGet(ctx *gin.Context) {
+	var params vo.TaobaoCrmHistoryOuidGetRequest
+
+	err := ctx.Bind(&params)
+	if err != nil {
+		utils.ResponseFailed(ctx, err.Error())
+		return
+	}
+
+	data, err := handler.Instance.TaobaoHandler().TaobaoCrmHistoryOuidGet(ctx, &params)
+	if err != nil {
+		utils.ResponseFailed(ctx, err.Error())
+		return
+	}
+
+	utils.ResponseOk(ctx, data, "success")
+}
+
+

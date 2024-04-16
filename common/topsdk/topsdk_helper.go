@@ -40,7 +40,7 @@ type TopSDKHelper interface {
 	// https://open.taobao.com/api.htm?docId=59185&docType=2&scopeId=24605 短信群发-客户运营平台-卡片短信权限包
 	TaobaoOpencrmCardSmsCrowdSend(ctx context.Context, userSession string, req any) (any, error)
 	// https://open.taobao.com/api.htm?docId=57623&docType=2&scopeId=24046 通用-客户运营平台-nick与openid互转
-	TaobaoCrmHistoryOuidGet(ctx context.Context, userSession string, req any) (any, error)
+	TaobaoCrmHistoryOuidGet(ctx context.Context, userSession string, req *request.TaobaoCrmHistoryOuidGetRequest) (*response.TaobaoCrmHistoryOuidGetResponse, error)
 	// https://open.taobao.com/api.htm?docId=120&docType=2&scopeId=381 通用-时间获取
 	TimeGet(ctx context.Context, req *request.TimeGetRequest) (*response.TimeGetResponse, error)
 	// https://open.taobao.com/api.htm?docId=18&docType=2&scopeId=382 商品相关-卖家商品查询
@@ -113,8 +113,8 @@ func (i *TopSDKInstance) TaobaoOpencrmCardSmsCrowdSend(ctx context.Context, user
 	return nil, nil
 }
 
-func (i *TopSDKInstance) TaobaoCrmHistoryOuidGet(ctx context.Context, userSession string, req any) (any, error) {
-	return nil, nil
+func (i *TopSDKInstance) TaobaoCrmHistoryOuidGet(ctx context.Context, userSession string, req *request.TaobaoCrmHistoryOuidGetRequest) (*response.TaobaoCrmHistoryOuidGetResponse, error) {
+	return defaultability.NewDefaultability(i.client).TaobaoCrmHistoryOuidGet(req, userSession)
 }
 
 func (i *TopSDKInstance) TimeGet(ctx context.Context, req *request.TimeGetRequest) (*response.TimeGetResponse, error) {

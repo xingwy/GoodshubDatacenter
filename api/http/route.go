@@ -21,6 +21,9 @@ func Reginster(instance *gin.Engine) *gin.Engine {
 		taobao.POST("/taobaoItemSellerGet", TaobaoItemSellerGet)
 		taobao.POST("/taobaoItemcatsGet", TaobaoItemcatsGet)
 		taobao.POST("/timeGet", TimeGet)
+		taobao.POST("/taobaoCrmHistoryOuidGet", TaobaoCrmHistoryOuidGet)
+
+		
 
 	}
 
