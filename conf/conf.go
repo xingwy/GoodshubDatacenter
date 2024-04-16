@@ -26,7 +26,7 @@ func init() {
 
 func Init() (err error) {
 	// 读取 YAML 文件
-	yamlFile, err := os.ReadFile("../config.yaml")
+	yamlFile, err := os.ReadFile("./config.yaml")
 	if err != nil {
 		return err
 	}

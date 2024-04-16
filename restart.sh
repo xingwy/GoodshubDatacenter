@@ -24,8 +24,8 @@ fi
 
 # 根据参数值确定Go文件和目标目录
 if [ "$1" == "api" ]; then
-    go_file="./api/main.go"
-    target_dir="./api/bin"
+    go_file="./api/build/main.go"
+    target_dir="./api/build"
 else
     echo "Invalid argument. Usage: $0 [api]"
     exit 1
